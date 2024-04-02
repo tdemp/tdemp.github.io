@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Скачать приложение сотрудника</title>
+    <meta property="og:title" content="Скачать приложение сотрудника">
+    <meta property="og:description" content="Скачивание должно начаться автоматически">
+    <meta property="og:image" content="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9a/96/e8/9a96e874-c2f8-0575-5840-6c3e310e5c6e/AppIcon-0-0-1x_U007ephone-0-85-220.png/1200x630wa.png">
+    <meta property="og:url" content="https://tdemp.github.io/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Скачать приложение сотрудника">
+    <meta name="twitter:description" content="Скачивание должно начаться автоматически">
+    <meta name="twitter:image" content="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9a/96/e8/9a96e874-c2f8-0575-5840-6c3e310e5c6e/AppIcon-0-0-1x_U007ephone-0-85-220.png/1200x600wa.png">
+    <meta name="twitter:url" content="https://tdemp.github.io/">
     <script>
         fetch('https://raw.githubusercontent.com/tdemp/emp/main/version.json')
             .then(response => response.json())
@@ -13,7 +23,34 @@
                     apkUrl = data.prodUrl;
                 }
                 window.location.href = apkUrl;
+                document.getElementById('apkUrl').href = apkUrl;
             });
     </script>
+    <style>
+        body {
+            margin: 0;
+            text-align: center;
+          }
+          
+          body::before,
+          div {
+            display: inline-block;
+            vertical-align: middle;
+          }
+          
+          a {
+            color: #007bff;
+            text-decoration: none;
+          }
+          
+          body:before {
+            content: '';
+            height: 100vh;
+          }
+    </style>
 </head>
+<body>
+    <div><p>Скачивание должно начаться автоматически</p>
+    <p>Если этого не произошло, нажмите <a id="apkUrl">сюда</a></div>
+</body>
 </html>
