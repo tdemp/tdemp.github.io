@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script>
+        fetch('https://raw.githubusercontent.com/tdemp/emp/main/version.json')
+            .then(response => response.json())
+            .then(data => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const stage = urlParams.get('stage');
+                if(stage != null) {
+                    apkUrl = data.stageUrl;
+                } else {
+                    apkUrl = data.prodUrl;
+                }
+                window.location.href = apkUrl;
+            });
+    </script>
+</head>
+</html>
