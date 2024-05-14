@@ -12,19 +12,18 @@
     <meta name="twitter:image" content="https://is1-ssl.mzstatic.com/image/thumb/Purple221/v4/9a/96/e8/9a96e874-c2f8-0575-5840-6c3e310e5c6e/AppIcon-0-0-1x_U007ephone-0-85-220.png/1200x600wa.png">
     <meta name="twitter:url" content="https://tdemp.github.io/">
     <script>
-        fetch('https://raw.githubusercontent.com/tdemp/emp/main/version.json')
-            .then(response => response.json())
-            .then(data => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const stage = urlParams.get('stage');
-                if(stage != null) {
-                    apkUrl = data.stageUrl;
-                } else {
-                    apkUrl = data.prodUrl;
-                }
-                window.location.href = apkUrl;
-                document.getElementById('apkUrl').href = apkUrl;
-            });
+        const s3Prefix = 'https://s3employee-apk.s3.eu-north-1.amazonaws.com';
+        function setApkUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const stage = urlParams.get('stage');
+            if(stage != null) {
+                apkUrl = s3Prefix+'/stage-release.apk';
+            } else {
+                apkUrl = s3Prefix+'/prod-release.apk';
+            }
+            window.location.href = apkUrl;
+            document.getElementById('apkUrl').href = apkUrl;   
+        }
     </script>
     <style>
         body {
